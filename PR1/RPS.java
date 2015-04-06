@@ -7,6 +7,9 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class RPS {
+  
+  /** Main function
+    */
   public static void main(String[] args) {
     int inputnum;
     Scanner scnr = new Scanner(System.in);
@@ -23,7 +26,15 @@ public class RPS {
     whowin(player1, player2);
     return;
   }
- 
+
+  /** Print palyer output
+    *
+    * Input:
+    *   player - input integer
+    *
+    * Output:
+    *   print the player result   
+    */
   private static void player(int player) {
     switch (player) {
       case 0:
@@ -40,7 +51,16 @@ public class RPS {
         break;
     }
   }
- 
+  
+  /** Print game result
+    *
+    * Input:
+    *   player1 - input integer
+    *   player2 - input integer
+    *
+    * Output:
+    *   print the game result   
+    */
   private static void whowin(int player1, int player2) {
     int temp = player1 - player2;
     if (temp == -1 || temp == 2) {
