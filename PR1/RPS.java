@@ -1,12 +1,18 @@
 /** 
+ *  FileName: RPS.java
  *  Name: Busheng LOU	 
  *  Email: bulou@eng.ucsd.edu 
- *  ID: A53080746 
+ *  ID: A53080746
+ *  Data: 04/09/2015 
  */
 import java.util.Random;
 import java.util.Scanner;
 
 public class RPS {
+  
+  public static final int rock = 0;
+  public static final int scissors = 1;
+  public static final int paper = 2;
   
   /** Main function
     */
@@ -20,9 +26,9 @@ public class RPS {
     int player1 = randnum.nextInt(3);
     int player2 = randnum.nextInt(3);
     System.out.print("Player 1 : ");
-    player(player1);  
+    printplayer(player1);  
     System.out.print("Player 2 : ");  
-    player(player2);  
+    printplayer(player2);  
     whowin(player1, player2);
     return;
   }
@@ -35,15 +41,15 @@ public class RPS {
     * Output:
     *   print the player result   
     */
-  private static void player(int player) {
+  private static void printplayer(int player) {
     switch (player) {
-      case 0:
+      case rock:
         System.out.println("rock");
         break;
-      case 1:
+      case scissors:
         System.out.println("scissors");
         break;
-      case 2:
+      case paper:
         System.out.println("paper");
         break;
       default:
@@ -63,7 +69,7 @@ public class RPS {
     */
   private static void whowin(int player1, int player2) {
     int temp = player1 - player2;
-    if (temp == -1 || temp == 2) {
+    if (temp == -1 || temp == 2) {    // 2 means paper - rock
       System.out.println("Player 1 Wins");
     } else if (temp == 0) {
       System.out.println("Nobody Wins");
