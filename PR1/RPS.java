@@ -10,9 +10,9 @@ import java.util.Scanner;
 
 public class RPS {
   
-  public static final int rock = 0;
-  public static final int scissors = 1;
-  public static final int paper = 2;
+  private static final int rock = 0;
+  private static final int scissors = 1;
+  private static final int paper = 2;
   
   /** Main function
     */
