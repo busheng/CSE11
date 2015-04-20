@@ -9,95 +9,107 @@ import java.util.Scanner;
 import java.util.Arrays;
 
 public class ArrayPlay {
+  
   public static IntArray11 Array11;
+  
   public static void main(String[] args) {
     Scanner scnr = new Scanner(System.in);
     String prompt = "> ", ok = "OK", error = "BAD INPUT";
     System.out.print(prompt);
+    
     while (scnr.hasNext()) {
-      String command = scnr.nextLine();
-      System.out.println(command);
-      String [] arg = command.split("\\s+");
-      switch (arg[0].toLowerCase()) {
+      boolean good_input = false;
+      String inputs = scnr.nextLine();
+      String[] input = inputs.split("\\s+");
+      String command = input[0].toLowerCase();
+      int[] arguments = getArgs(input);
+      int len = arguments.length;
+      switch (command) {
         case "new":
-	  array_new(arg);
-	break;
+	  good_input = array_new(arguments);
+	  break;
         case "print":
-	  array_print(arg);
-	break;
+	  good_input = array_print(arguments);
+	  break;
         case "delete":
-	  Array11.delete(Integer.parseInt(arg[1]));
-	break;
+	  if (len == 1)
+	  good_input = Array11.delete(arguments[0]);
+	  break;
         case "insert":
-	  int index = Integer.parseInt(arg[1]);
-	  int ele = Integer.parseInt(arg[2]);
-	  if (Array11.insert(index, ele)) {
-	   System.out.println(ok);
-	  } else {
-	   System.out.println(error);
-	  }          
-	break;
+	  if (len == 2)
+	  good_input = Array11.insert(arguments[0], arguments[1]);
+	  break;
         case "reverse":
-	  array_reverse(arg);
-	break;
+	  good_input = array_reverse(arguments);
+	  break;
         case "set":
-	  int index3 = Integer.parseInt(arg[1]);
-	  int element = Integer.parseInt(arg[2]);
-	  if (Array11.setElement(index3, element)) {
-	   System.out.println(ok);
-	  } else {
-	   System.out.println(error);
-	  }
-	break;
+	  if (len == 2)
+	  good_input = Array11.setElement(arguments[0], arguments[1]);
+	  break;
         case "size":
           System.out.println( Array11.getNelem());
-	break;
+	  good_input = true;
+	  break;
 	case "swap":
-	  int index1 = Integer.parseInt(arg[1]);
-	  int index2 = Integer.parseInt(arg[2]);
-          Array11.swap(index1, index2);
-	break;
+	  if(len == 2)
+	  good_input = Array11.swap(arguments[0], arguments[1]);
+	  break;
 	case "exit":
-	System.exit(0);
-	break;
+	  System.exit(0);
+	  break;
 	default :
-	System.out.println("BAD INPUT");
-        break;
+	  break;
+      }
+      if (good_input) {
+        System.out.println(ok);
+      } else {
+        System.out.println(error);
       }
     System.out.print(prompt);
     } 
   }
 
-  public static void array_new (String[] arg) {
-    if (arg.length == 1) {
-      Array11 = new IntArray11(); 
-    } else if (arg.length == 2) {
-      Array11 = new IntArray11(Integer.parseInt(arg[1]));
-    } else {
-      int[] arrays = new int[arg.length-1];
-      int i = 1;
-      while (i < arg.length ) {
-        arrays[i-1] = Integer.parseInt(arg[i]);
-	Array11 = new IntArray11(arrays);
-	i++;
-      }
+  public static int[] getArgs(String[] inputs) {
+    int[] rel = new int[inputs.length - 1];
+    int i = 1;
+    while (i != inputs.length) {
+      rel[i-1] = Integer.parseInt(inputs[i]);
+      i++;
     }
-  } 
-  
-  public static void array_print(String[] arg ) {
-    if (arg.length == 1) {
-      System.out.println(Array11.toString());  
+    return rel;
+  }
+
+  public static boolean array_new (int[] args) {
+    if (args.length == 0) {
+      Array11 = new IntArray11(); 
+    } else if (args.length == 1) {
+      Array11 = new IntArray11(args[0]);
     } else {
-      System.out.println(Array11.getElement(Integer.parseInt(arg[1])));
+	Array11 = new IntArray11(args);
+    }   
+    return true;
+  }
+  
+  public static boolean array_print(int[] args ) {
+    if (args.length == 0) {
+      System.out.println(Array11.toString());
+      return true;
+    } else if (args.length == 1) {
+      System.out.println(Array11.getElement(args[0]));
+      return true;
+    } else {
+      return false;
     }
   }
 
-  public static void array_reverse(String[] arg) {
-    if (arg.length == 1) {
+  public static boolean array_reverse(int[] args) {
+    if (args.length == 0) {
       Array11.reverse();
+      return true;
+    } else if (args.length == 2){
+      return Array11.reverse(args[0], args[1]); 
     } else {
-     int start = Integer.parseInt(arg[1]), end = Integer.parseInt(arg[2]);
-    Array11.reverse(start, end); 
+      return false;
     }
   }
 }
