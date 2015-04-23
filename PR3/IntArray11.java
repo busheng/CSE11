@@ -5,8 +5,8 @@
  */
 public class IntArray11
 {        
-        private static int[] array;
-	private static int array_len = 0;
+        private int[] array;
+	private int array_len = 0;
 	/** 
  	 * 0-argument constructor. Valid instance of an Array of int,
  	 * no ints are stored in the array.
@@ -58,13 +58,13 @@ public class IntArray11
 	public String toString()
 	{ 
           String rel = new String();  
-	  if (array.length == 0) {
+	  if (array_len == 0) {
             rel = "[]";  
 	  } else {
 	    int i = 0;
 	    rel ="[";
 	    rel = rel.concat(Integer.toString(array[i]));
-	    while (i++ != (array.length - 1)) {
+	    while (i++ != (array_len - 1)) {
 	      rel = rel.concat(", ");
 	      rel = rel.concat(Integer.toString(array[i]));
 	    }
@@ -89,10 +89,10 @@ public class IntArray11
 	*/
 	public int getElement(int index)
 	{ 
-	  if (index < array.length) {
+	  if (index < array_len && index >= 0) {
 	    return array[index];
 	  } else { 
-	  return Integer.MIN_VALUE;	
+	    return Integer.MIN_VALUE;	
 	  }
 	}
 	
@@ -119,7 +119,7 @@ public class IntArray11
 	*/
 	public boolean setElement(int index, int element)
 	{ 
-	  if (index < array.length && index >=0) {
+	  if (index < array_len && index >=0) {
 	    array[index] = element;
 	    return true;
 	  } else {
@@ -135,7 +135,7 @@ public class IntArray11
 	*/
 	public boolean insert(int index, int element)
 	{ 
-	  if (index < array.length && index >= 0) {
+	  if (index <= array_len && index >= 0) {
 	    int[] temp = this.getArray();	    
 	    array_len = array_len + 1;
 	    array = new int[array_len];
@@ -161,9 +161,9 @@ public class IntArray11
 	*/
 	public boolean delete(int index)
 	{
-	  if (index <array.length) {
+	  if (index <array_len && index >= 0) {
 	    int i = index;
-	    while (i != (array.length - 1)) {
+	    while (i != (array_len - 1)) {
 	      array[i] = array[i+1];
 	      i++;
 	    }
@@ -180,14 +180,6 @@ public class IntArray11
 	public void reverse()
 	{
 	  this.reverse(0, array.length-1);
-	  /*
-          int i = 0;
-	  for ( ; i < array.length / 2; i++) {
-	    int temp = array[i];
-	    array[i] = array[array.length - i - 1];
-	    array[array.length - 1 - i] = temp;
-	  }
-	  */
 	}
 
 	/** reverse the order of the elements in the array from start to
@@ -220,8 +212,8 @@ public class IntArray11
 	*/
 	public boolean swap(int index1, int index2)
 	{
-	  if (index1 >=0 && index1 < array.length && index2 >= 0 && index2 <
-	    array.length) {
+	  if (index1 >=0 && index1 < array_len && index2 >= 0 && index2 <
+	    array_len) {
 	    int temp= array[index1];
 	    array[index1] = array[index2];
 	    array[index2] = temp;
