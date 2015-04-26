@@ -6,10 +6,14 @@
  *  Data: 04/30/2015 
  */
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class AsciiArt {
+   
+  public static AsciiGrid grid11;
   
   public static void main(String[] args) {
+    ArrayList<AsciiShape> shapelist = new ArrayList<AsciiShape>();
     Scanner scnr = new Scanner(System.in);
     String prompt = "> ", ok = "OK", error = "BAD INPUT";
     System.out.print(prompt);
@@ -29,8 +33,13 @@ public class AsciiArt {
         case "list":
 	  break;
         case "new":
+	  good_input = grid_new(arguments);
 	  break;
         case "print":
+	  if (len == 0) {
+	    System.out.println(grid11.toString());
+	    good_input = true;
+	  }
 	  break;
         case "place":
 	  break;
@@ -68,5 +77,18 @@ public class AsciiArt {
     return rel;
   }
 
- 
+  /** Create a Shape object. 
+   * @param args input arguments
+   * @return true when a object is created
+  */
+  public static boolean grid_new (int[] args) {
+    if (args.length == 0) {
+      grid11 = new AsciiGrid();
+    } else if (args.length == 2) {
+      grid11 = new AsciiGrid(args[0], args[1]);
+    } else {
+      return false;
+    }   
+    return true;
+  } 
 }

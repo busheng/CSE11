@@ -31,6 +31,12 @@ public class AsciiGrid
 	  grid = new char [row][col];
 	  height = row;
 	  width = col;
+	  int i,j;
+	  for (i = 0; i < height; i++ ) {
+	    for (j = 0; j < width; j++) {
+	       grid[i][j] = EMPTY;
+	    }
+	  }
 	}
 	/** return a row x col array of the current char array  
 	 * This should be a full/deep copy, not a reference to internal
@@ -86,7 +92,7 @@ public class AsciiGrid
 	 */
 	public int [] getSize()
 	{      
-          int [][] size = new int[2];
+          int[] size = new int[2];
 	  size[0] = height;
 	  size[1] = width;
 	  return size; 
