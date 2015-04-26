@@ -48,24 +48,24 @@ public class AsciiArt {
 	  }
 	  break;
         case "list":
-	  for (AsciiShape shape : shapelist) {
-	    System.out.println(shape.toString());
-	  }
+	  good_input = grid_list(argus, shapelist);
 	  break;
         case "new":
 	  good_input = grid_new(argus);
 	  break;
         case "print":
-	  if (len == 0) {
-	    System.out.println(grid11.toString());
-	    good_input = true;
-	  }
+	  good_input = grid_print(argus);
 	  break;
         case "place":
+	  good_input = grid11.placeShape(shapelist.get(argus[0]).getShape(),argus[1],argus[2]);
 	  break;
         case "clear":
+	  good_input = grid11.clearShape(shapelist.get(argus[0]).getShape(),argus[1],argus[2]);
 	  break;
         case "set":
+	  char symbol = input[1].charAt(0);
+	  if (len == 0)
+	  shapelist.get(argus[0]).setSymbol(symbol);
 	  break;
         case "exit":
           System.out.println(ok);
@@ -121,5 +121,24 @@ public class AsciiArt {
       return false;
     }   
     return true;
-  } 
+  }
+
+  public static boolean grid_print(int[] args) {
+    if (args.length != 0)
+      return false;
+    System.out.println(grid11.toString());
+    return true;
+  }
+  
+  public static boolean grid_list(int[] args, 
+             ArrayList<AsciiShape> shapelist) {
+    if (args.length != 0)
+      return false;
+    int i = 0;
+    for (AsciiShape shape : shapelist) {
+      System.out.println(i++ + ":");
+      System.out.println(shape.toString());
+    }
+    return true;
+  }
 }

@@ -67,7 +67,24 @@ public class AsciiGrid
 	 */
 	public boolean placeShape(char [][] shape,int r, int c)
 	{
-		return false;
+	  if ((r + shape.length) > height || 
+	      (c + shape[shape.length-1].length) > width) {
+	      return false;
+          }
+	  int i,j;
+	  for (i = 0; i < shape.length; i++) {
+	    for (j = 0; j< shape[i].length; j++) {
+	      if (grid[i+r][j+c] != EMPTY) {
+                return false;
+	      }
+	    }
+	  }
+	  for (i = 0; i < shape.length; i++) {
+	    for (j = 0; j< shape[i].length; j++) {
+	      grid[i+r][j+c] = shape[i][j];
+	    }
+	  }
+	  return true;
 	}
 	
 	/** 
@@ -83,8 +100,18 @@ public class AsciiGrid
 	 * @return true, if successful false otherwise
 	 */
 	public boolean clearShape(char [][] shape,int r, int c)
-	{
-		return false;
+	{ 
+	  if ((r + shape.length) > height || 
+	      (c + shape[shape.length-1].length) > width) {
+	    return false;
+          }
+	  int i,j;
+	  for (i = 0; i < shape.length; i++) {
+	    for (j = 0; j< shape[i].length; j++) {
+	      grid[i+r][j+c] = EMPTY;
+	    }
+	  }
+	  return true;
 	}
 	
 	/** Return the width and height of the grid 
@@ -124,7 +151,7 @@ public class AsciiGrid
 	  for (j = 0; j < width + 2; j++) 
 	    output +=ROWFRAME;	  
 	  output += NEWLINE;
-          return output;
+          return output.substring(0,output.length()-1);
 	}
 	
 

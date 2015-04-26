@@ -106,7 +106,7 @@ public class AsciiShape
 		int i,j;
 		for (i = 0; i < shape.length; i++)
 			output += new String(shape[i]) + NEWLINE;
-		return output;
+		return output.substring(0,output.length()-1);
 	}
 
 }
