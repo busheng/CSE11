@@ -32,20 +32,10 @@ public class AsciiArt {
       int len = argus.length;
       switch (command) {
         case "triangle":
-	  if (!first_int) {
-	    char symbol = input[1].charAt(0);
-	    shapelist.add(new AsciiShape(TRIANGLE,argus[0],argus[1], symbol));
-	  } else {
-	    shapelist.add(new AsciiShape(TRIANGLE,argus[0],argus[1]));
-	  }
+	  good_input = shape_new (TRIANGLE, shapelist, input);
 	  break;
         case "rectangle":
-	  if (!first_int) {
-	    char symbol = input[1].charAt(0);
-	    shapelist.add(new AsciiShape(RECTANGLE,argus[0],argus[1], symbol));
-	  } else {
-	    shapelist.add(new AsciiShape(RECTANGLE,argus[0],argus[1]));
-	  }
+	  good_input = shape_new (RECTANGLE, shapelist, input);
 	  break;
         case "list":
 	  good_input = grid_list(argus, shapelist);
@@ -85,7 +75,7 @@ public class AsciiArt {
 
   /** Create and return a int array of input arguments. 
    * @param inputs array of input strings 
-   * @return a int array of arguments
+   * @return a int array of arguments     
   */
   public static int[] getArgs(boolean first_int, String[] inputs) {
     if (inputs.length == 1) {
@@ -107,7 +97,31 @@ public class AsciiArt {
     }
     return rel;
   }
-
+  public static boolean shape_new (boolean triangle,
+    ArrayList<AsciiShape> shapelist, String[] inputs) {
+    if (inputs.length == 3) {
+      int row = Integer.parseInt(inputs[1]);
+      int col = Integer.parseInt(inputs[2]);
+      if (triangle) {
+        shapelist.add(new AsciiShape(TRIANGLE, row, col));
+      } else {
+        shapelist.add(new AsciiShape(RECTANGLE, row, col));
+      }
+      return true;
+    }
+    if (inputs.length == 4) {
+      char symbol = inputs[1].charAt(0);
+      int row = Integer.parseInt(inputs[2]);
+      int col = Integer.parseInt(inputs[3]);
+      if (triangle) {
+        shapelist.add(new AsciiShape(TRIANGLE, row, col, symbol));
+      } else {
+        shapelist.add(new AsciiShape(RECTANGLE, row, col, symbol));
+      }
+      return true;
+    }
+    return false; 
+  }
   /** Create a Shape object. 
    * @param args input arguments
    * @return true when a object is created
