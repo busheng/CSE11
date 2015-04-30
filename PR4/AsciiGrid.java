@@ -71,6 +71,7 @@ public class AsciiGrid
 	      (c + shape[shape.length-1].length) > width) {
 	      return false;
           }
+	  if (r < 0 || c < 0) return false;
 	  int i,j;
 	  for (i = 0; i < shape.length; i++) {
 	    for (j = 0; j< shape[i].length; j++) {
@@ -105,6 +106,7 @@ public class AsciiGrid
 	      (c + shape[shape.length-1].length) > width) {
 	    return false;
           }
+	  if (r < 0 || c < 0) return false;
 	  int i,j;
 	  for (i = 0; i < shape.length; i++) {
 	    for (j = 0; j< shape[i].length; j++) {

@@ -93,6 +93,7 @@ public class AsciiArt {
     if (inputs.length == 3) {
       int row = Integer.parseInt(inputs[1]);
       int col = Integer.parseInt(inputs[2]);
+      if (row <= 0 || col <= 0) return false;
       if (triangle) {
         shapelist.add(new AsciiShape(TRIANGLE, row, col));
       } else {
@@ -104,6 +105,7 @@ public class AsciiArt {
       char symbol = inputs[1].charAt(0);
       int row = Integer.parseInt(inputs[2]);
       int col = Integer.parseInt(inputs[3]);
+      if (row <= 0 || col <= 0) return false;
       if (triangle) {
         shapelist.add(new AsciiShape(TRIANGLE, row, col, symbol));
       } else {
@@ -121,7 +123,7 @@ public class AsciiArt {
     if (!fir_int) return false;
     if (args.length == 0) {
       grid11 = new AsciiGrid();
-    } else if (args.length == 2) {
+    } else if (args.length == 2 && args[0] > 0 && args[1] > 0) {
       grid11 = new AsciiGrid(args[0], args[1]);
     } else {
       return false;
