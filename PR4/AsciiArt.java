@@ -77,7 +77,7 @@ public class AsciiArt {
   /** Create and return a int array of input arguments. 
    * @param inputs array of input strings 
    * @return a int array of arguments     
-  */
+   */
   public static int[] getArgs(String[] inputs) {
     int[] rel = new int[inputs.length - 1];
     int i = 1;
@@ -87,7 +87,13 @@ public class AsciiArt {
     }
     return rel;
   }
-
+  
+  /** Create Acsiishape object and add into arraylist 
+   * @param trangle if true, create triangle
+   * @param shapelist the shape list 
+   * @param inputs array of input strings 
+   * @return a int array of arguments     
+   */
   public static boolean shape_new (boolean triangle,
     ArrayList<AsciiShape> shapelist, String[] inputs) {
     if (inputs.length == 3) {
@@ -115,7 +121,9 @@ public class AsciiArt {
     }
     return false; 
   }
-  /** Create a Shape object. 
+
+  /** Create Asciigird object. 
+   * @param fir_int true if first input is integer
    * @param args input arguments
    * @return true when a object is created
   */
@@ -132,6 +140,11 @@ public class AsciiArt {
     return true;
   }
 
+  /** Print the Asciigrid. 
+   * @param fir_int true if first input is integer
+   * @param args input arguments
+   * @return true when print successfully
+  */
   public static boolean grid_print(boolean fir_int, int[] args) {
     if (args.length != 0 || !fir_int || !grid_exist)
       return false;
@@ -139,6 +152,12 @@ public class AsciiArt {
     return true;
   }
   
+  /** List the shapes in the shapelist 
+   * @param fir_int true if first input is integer
+   * @param args input arguments
+   * @param shapelist the shape list 
+   * @return true when list the shapes successfully
+  */
   public static boolean grid_list(boolean fir_int, int[] args, 
                               ArrayList<AsciiShape> shapelist) {
     if (args.length != 0 || !fir_int)
@@ -151,6 +170,13 @@ public class AsciiArt {
     return true;
   }
 
+  /** Place or Clearthe shapes in the grid 
+   * @param fir_int true if first input is integer
+   * @param place true if user wang to place
+   * @param shapelist the shape list 
+   * @param args input arguments
+   * @return true when place or clear the shapes successfully
+  */
   public static boolean grid_place_clear (boolean fir_int, boolean place,
                              ArrayList<AsciiShape> shapelist, int[] args) {
     int nele = shapelist.size();
@@ -164,6 +190,11 @@ public class AsciiArt {
     }
   }
 
+  /** Set the symbol of shapes in the shapelist 
+   * @param shapelist the shape list 
+   * @param inputs array of input strings 
+   * @return true when set the shapes successfully
+  */
   public static boolean grid_set(ArrayList<AsciiShape> shapelist,
                                                  String[] inputs) {
     int index = Integer.parseInt(inputs[2]);
