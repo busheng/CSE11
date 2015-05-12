@@ -1,0 +1,6 @@
+Some Sample Files for PR5
+atw80d.txt        -- Jules Verne Around the World in 80 Days. A large file
+atw80d.rot13      -- Encoded with CSE11's version of rot13
+unknown-rot13-enc -- unknown file. If your rot13 decoder is working, it will obvious
+unknown-key-enc   -- encoded with key "keeler" using sum of bytes of the key string to create
+                     the byte-sized key
