@@ -13,12 +13,11 @@ public class KeyCrypt extends CryptStream {
   KeyCrypt(StreamPair theStreams, String input_key) {
     super(theStreams);
     if (input_key != null) {
-    String key_value = new String(input_key);
-    byte[] keybyte_array = key_value.getBytes();
-    for (byte keybyte : keybyte_array) {
-      key +=keybyte;
-    }
-    System.out.println("key is " + key);
+      String key_value = new String(input_key);
+      byte[] keybyte_array = key_value.getBytes();
+      for (byte keybyte : keybyte_array) {
+        key +=keybyte;
+      }
     }
   }
   
