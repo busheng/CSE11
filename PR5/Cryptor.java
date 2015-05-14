@@ -5,11 +5,11 @@
  *  ID: A53080746
  *  Data: 05/14/2015 
  */
-
 import java.io.IOException;
 public class Cryptor {
   
-  private final static String USAGE = "Cryptor [-d algorithm] [-e algorithm] [-k key] [-i infile] [-o outfile]\n   algorithms: plain rot13 key";
+  private final static String USAGE = "Cryptor [-d algorithm] [-e algorithm]" 
+      + "[-k key] [-i infile] [-o outfile]\n     algorithms: plain rot13 key";
   private final static String INFILE = "-i", OUTFILE = "-o", DECRY = "-d", ENCRY = "-e", _KEY = "-k";
   private final static String PLAIN = "plain", ROT13 = "rot13", KEY = "key";
   private final static boolean ENCRYPT = true, DECRYPT = false;
@@ -82,6 +82,10 @@ public class Cryptor {
     }
   }
 
+  /** Encrypt or Decrypt 
+   * @param crypt plain, rot13 or key crypt object
+   * @param activity true if doing encrypt    
+   */
   private static <Type extends CryptStream>
   void action (Type crypt, boolean activity) {
     if (activity == ENCRYPT) {
@@ -91,6 +95,8 @@ public class Cryptor {
     }
   }
 
+  /** Print out the usage instructions 
+   */
   private static void help() {
     System.out.println(USAGE); 
     System.exit(0);

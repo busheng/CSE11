@@ -7,9 +7,11 @@
  */
 import java.util.Arrays;
 public class PlainCrypt extends CryptStream {
+  
   PlainCrypt(StreamPair theStreams) {
     super(theStreams);
   }
+  
   @Override
   protected byte[] cryptData (byte[] data, int len) {
     byte[] new_data = new byte[len];

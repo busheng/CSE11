@@ -2,6 +2,8 @@
  * based what was asked for in the constructor
  * @author Busheng LOU
  * @version 15 May 2015
+ *  Email: bulou@eng.ucsd.edu 
+ *  ID: A53080746
  */
 import java.io.InputStream;
 import java.io.OutputStream;

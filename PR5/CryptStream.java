@@ -1,6 +1,8 @@
 /** A class that encrypts/decrypts
  * @author Busheng LOU
  * @version 14/May/2015
+ * Email: bulou@eng.ucsd.edu 
+ * ID: A53080746
  */
 import java.io.InputStream;
 import java.io.OutputStream;

@@ -7,7 +7,9 @@
  */
 
 public class KeyCrypt extends CryptStream {
+  
   private byte key = 0;
+  
   KeyCrypt(StreamPair theStreams, String input_key) {
     super(theStreams);
     if (input_key != null) {
@@ -19,6 +21,7 @@ public class KeyCrypt extends CryptStream {
     System.out.println("key is " + key);
     }
   }
+  
   @Override
   protected byte[] cryptData (byte[] data, int len) {
     byte[] new_data = new byte[len];

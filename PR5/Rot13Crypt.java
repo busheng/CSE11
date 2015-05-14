@@ -6,9 +6,11 @@
  *  Data: 05/14/2015 
  */
 public class Rot13Crypt extends CryptStream {
+  
   Rot13Crypt(StreamPair theStreams) {
     super(theStreams);
   }
+
   @Override
   protected byte[] cryptData (byte[] data, int len) {
     byte[] new_data = new byte[len];
