@@ -1,3 +1,10 @@
+/** 
+ *  FileName: BlockGrid.java
+ *  Name: Busheng LOU	 
+ *  Email: bulou@eng.ucsd.edu 
+ *  ID: A53080746
+ *  Data: 05/19/2015 
+ */
 import java.awt.*;
 import java.util.ArrayList;
 import javax.swing.*;
@@ -138,14 +145,13 @@ class Mover implements Runnable {
       try { TimeUnit.MILLISECONDS.sleep(wait);}
       catch (InterruptedException e){};
       grid.clearCell();
-      if (w == width - 2 ) LEFTTORIGHT = false;
-      if (w == 0 ) LEFTTORIGHT =true;
+      if (w >= width - 2 ) LEFTTORIGHT = false;
+      if (w <= 0 ) LEFTTORIGHT =true;
       if (LEFTTORIGHT) {
 	w++;
       } else {
         w--;
       }
-      if (width == 2) w = 0;
     }
   } 
 
