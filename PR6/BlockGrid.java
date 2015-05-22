@@ -15,14 +15,12 @@ import java.lang.Runnable;
 import java.util.concurrent.TimeUnit;
 import java.awt.event.*;
 
-/* Many "magic" numbers (bad!)  */
-
 /**
- * This is class one.
+ * This is class BlockGrid.
  * 
- * {@link ExpertImpl}
+ * {@link MyWindow}
  * 
- * @author Me
+ * @author Busheng LOU
  * 
  */
 public class BlockGrid {
@@ -68,10 +66,10 @@ public class BlockGrid {
 }
 
 /**
- * This is class two.
- * 
- * @author Me
- * 
+ * This is class MyWindow.
+ * {@link Mover}
+ * {@link Grid}
+ * @author Busheng LOU
  */
 class MyWindow extends JFrame implements Runnable
 {
@@ -107,6 +105,10 @@ class MyWindow extends JFrame implements Runnable
 
 }
 
+/**
+ * This is class Grid.
+ * @author Busheng LOU
+ */
 class Grid extends JPanel {
 	private ArrayList<Point> fillCells;
 	private int width, height, pixels;
@@ -176,6 +178,10 @@ class Grid extends JPanel {
 
 }
 
+/**
+ * This is class Mover.
+ * @author Busheng LOU
+ */
 class Mover implements Runnable { 
   private final static int wait = 150;	
   Grid grid;
@@ -210,6 +216,7 @@ class Mover implements Runnable {
       } else {
         w--;
       }
+      if (width == 2) w = 0;
     }
   } 
 
