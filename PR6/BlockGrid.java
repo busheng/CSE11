@@ -17,6 +17,14 @@ import java.awt.event.*;
 
 /* Many "magic" numbers (bad!)  */
 
+/**
+ * This is class one.
+ * 
+ * {@link ExpertImpl}
+ * 
+ * @author Me
+ * 
+ */
 public class BlockGrid {
         /**
          * This is the main method which run the program.
@@ -59,6 +67,12 @@ public class BlockGrid {
 
 }
 
+/**
+ * This is class two.
+ * 
+ * @author Me
+ * 
+ */
 class MyWindow extends JFrame implements Runnable
 {
 	private	Grid grid;
