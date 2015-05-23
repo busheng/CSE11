@@ -24,7 +24,8 @@ import java.awt.event.*;
  * 
  */
 public class BlockGrid {
-        /**
+        public static boolean exit = false;	
+	/**
          * This is the main method which run the program.
          * @param a width,height and pixels of the windows.
          */
@@ -51,6 +52,7 @@ public class BlockGrid {
 			System.in.read();
 		}
 		catch (IOException e){}
+		exit = true;
 		window.dispatchEvent(new WindowEvent(window, 
 			WindowEvent.WINDOW_CLOSING));
         	window.dispose();	
@@ -204,7 +206,7 @@ class Mover implements Runnable {
   public void run() {
     boolean LEFTTORIGHT = true;
     int w = width/2 - 1, h = height/2 - 1;
-    while (w < width && w >= 0) {
+    while (w < width && w >= 0 && !BlockGrid.exit) {
       grid.fillCell(w, h);
       try { TimeUnit.MILLISECONDS.sleep(wait);}
       catch (InterruptedException e){};
